@@ -6,14 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
-class Controller1Controller extends AbstractController
+class HomeController extends AbstractController
 {
-    #[Route('/controller1', name: 'app_controller1')]
+    #[Route('/home', name: 'app_home')]
     public function index(): JsonResponse
     {
         return $this->json([
             'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/Controller1Controller.php',
+            'path' => 'src/Controller/HomeController.php',
         ]);
     }
 }
