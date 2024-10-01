@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class NurseController extends AbstractController
 {
@@ -21,12 +22,25 @@ class NurseController extends AbstractController
         "elena.garcia@email.com" => array("name" => "Elena García", "password" => "T6u7V8w9X0")
     );
 
-    #[Route('/nurse/name', name: 'app_nurse')]
-    public function index(): JsonResponse
+    #[Route('/nurse/name', name: 'app_nurse', methods: ['GET'])]
+    public function findByName(Request $request): JsonResponse
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/NurseController.php',
-        ]);
+
+        $return_nurses = array();
+
+        if (isset(self::$nurses)) {
+
+            $name = $request -> get('name');
+
+            // foreach (self::$nurses as $nurse) {
+            //     foreach ($nurse as $name => $data) {
+            //         if ($data['name'] == $request) {
+            //             $return_nurses[$email] = array('name' => $data['name']);
+            //         }
+            //     }
+            // }
+        }
+
+        return new JsonResponse($return_nurses);
     }
 }
