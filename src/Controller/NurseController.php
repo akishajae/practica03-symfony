@@ -30,15 +30,13 @@ class NurseController extends AbstractController
 
         if (isset(self::$nurses)) {
 
-            $name = $request -> get('name');
+            $name = $request->get('name');
 
-            // foreach (self::$nurses as $nurse) {
-            //     foreach ($nurse as $name => $data) {
-            //         if ($data['name'] == $request) {
-            //             $return_nurses[$email] = array('name' => $data['name']);
-            //         }
-            //     }
-            // }
+            foreach (self::$nurses as $email => $data) {
+                if ($data['name'] == $name) {
+                    $return_nurses[$email] = array('name' => $data['name']);
+                }
+            }
         }
 
         return new JsonResponse($return_nurses);
