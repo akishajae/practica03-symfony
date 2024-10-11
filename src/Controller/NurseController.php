@@ -32,6 +32,8 @@ class NurseController extends AbstractController
 
             $name = $request->get('name');
 
+            dd($name);
+
             foreach (self::$nurses as $email => $data) {
                 if ($data['name'] == $name) {
                     $return_nurses[$email] = array('name' => $data['name']);
